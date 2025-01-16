@@ -1,0 +1,39 @@
+#top-bar-chat {
+  background: #fff;
+  position: relative;
+  height: 64px;
+  padding: 0 15px;
+
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
+  box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
+  .top-bar-chat-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .box-name-image {
+      display: flex;
+      gap: 0 15px;
+
+      .back-button-chat {
+        border: none;
+        background: transparent;
+
+        svg {
+          font-size: 25px;
+          color: #6959cd;
+        }
+      }
+      img {
+        border-radius: 50%;
+        width: 40px;
+      }
+      .name {
+        margin-left: 15px;
+        font-weight: 500;
+        // color: #f !important;
+      }
+    }
+  }
+}

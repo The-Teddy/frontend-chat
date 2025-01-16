@@ -1,0 +1,69 @@
+#conversations {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+
+  .top-bar-conversations {
+    z-index: 100;
+    background: #fff !important;
+  }
+
+  .title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    background: #fff !important;
+
+    .title {
+      font-size: 25px;
+      font-weight: 600;
+      color: #6959cd !important;
+    }
+    .button-menu {
+      border: none;
+      background: transparent;
+      padding: 0;
+    }
+    .button-menu:hover {
+      scale: 1.1;
+    }
+  }
+  .filter-box {
+    width: 100%;
+    padding: 0 10px;
+    background: #fff !important;
+
+    .input-search {
+      background: #f2f2f2;
+      height: 40px;
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      padding: 15px;
+      margin: 15px 0;
+    }
+
+    .filters {
+      display: flex;
+      gap: 15px;
+
+      .filter-button {
+        background: #f2f2f2;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 20px;
+        color: #4f4f4f;
+      }
+    }
+  }
+  .conversations {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+}

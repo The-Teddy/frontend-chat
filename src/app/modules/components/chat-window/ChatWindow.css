@@ -1,0 +1,19 @@
+#chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex: 1;
+}
+
+#chat-window .messages {
+  background: linear-gradient(to bottom, #b0c4de, #87ceeb);
+
+  color: #fff !important;
+  overflow: auto !important;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column-reverse;
+  flex: 1;
+
+  padding-bottom: 15px;
+}

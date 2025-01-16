@@ -1,0 +1,25 @@
+.app {
+  background: #f2f2f2;
+  height: 100%;
+  padding: 0.1px;
+}
+.secondary-color {
+  color: #757575 !important;
+}
+.primary-color {
+  color: #333333 !important;
+}
+.hidden-element-1024 {
+  @media (max-width: 1024px) {
+    display: none !important;
+  }
+}
+.show-element {
+  display: flex !important;
+}
+
+p,
+span,
+h1 {
+  color: #333333;
+}

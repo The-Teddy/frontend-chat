@@ -1,0 +1,39 @@
+#message {
+  display: flex;
+  width: 100%;
+  padding: 0 25px;
+  .message-content {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.1),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+    max-width: 65%;
+    text-align: justify;
+    position: relative;
+
+    .message-time-status {
+      float: right;
+      margin-left: 5px;
+      margin-top: 10px;
+      font-size: 12px;
+      display: flex;
+      gap: 5px;
+    }
+    .message-button {
+      position: absolute;
+      top: -3px;
+      right: 10px;
+      border: none;
+      background: transparent;
+
+      svg {
+        font-size: 17px;
+      }
+    }
+  }
+}
