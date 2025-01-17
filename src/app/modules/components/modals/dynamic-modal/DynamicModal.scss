@@ -1,0 +1,27 @@
+#dynamic-modal {
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  transform: scale(0.9);
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  max-width: 90%;
+  .modal-message-button {
+    border: none;
+    background: none;
+    padding: 10px 20px;
+  }
+  .modal-message-button:hover {
+    background: #f2f2f2;
+  }
+}
+#dynamic-modal[style] {
+  transform: scale(1);
+}

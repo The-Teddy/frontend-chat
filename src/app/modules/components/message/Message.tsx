@@ -8,21 +8,24 @@ import SentIcon from '../icons/SentIcon';
 import { handleMessageTime } from '../../helpers/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import MessageDataModal from '../modals/message-data-modal/MessageDataModal';
 
-const Message: React.FC<MessageInterface> = ({ ...props }) => {
+interface MessageDataInterface {
+  message: MessageInterface;
+  setView: () => void;
+  setData: (
+    data: MessageInterface,
+    position: { clientX: number; clientY: number },
+  ) => void;
+  key: number;
+}
+const Message: React.FC<MessageDataInterface> = ({ ...props }) => {
   const { user } = useContext(Context);
   const [messageTime, setMessageTime] = useState<string>('');
   const [viewMessageButton, setViewMessageButton] = useState<boolean>(false);
-  const [modalPosition, setModalPosition] = useState<{
-    top: number;
-    left: number;
-  } | null>(null);
-  const modalRef = useRef();
 
   function handleSetMessageTime(): void {
-    if (props.sentAt) {
-      const messageTime = handleMessageTime(props.sentAt);
+    if (props.message.sentAt) {
+      const messageTime = handleMessageTime(props.message.sentAt);
       setMessageTime(messageTime);
     }
   }
@@ -31,59 +34,53 @@ const Message: React.FC<MessageInterface> = ({ ...props }) => {
     handleSetMessageTime();
   }, [props.message]);
 
-  function handleOpenModal(event: React.MouseEvent<HTMLButtonElement>) {
-    const target = event.target as HTMLDivElement;
-    const messageDiv = target.parentElement?.parentElement;
-    if (!messageDiv) return;
-
-    const rect = messageDiv.getBoundingClientRect();
-    console.log(rect);
-
-    // Verifica o espaço disponível
-    const spaceBelow = window.innerHeight - rect.bottom;
-    const spaceAbove = rect.top;
-    const spaceRight = window.innerWidth - rect.right;
-
-    // Determina a posição do modal
-    const position = {
-      top:
-        spaceBelow > 150
-          ? rect.bottom + window.scrollY
-          : rect.top - 150 + window.scrollY,
-      left: spaceRight > 150 ? rect.right : rect.left - 150,
-    };
-
-    setModalPosition(position);
-  }
   function handleOpenModalByContextMenu(
     event: React.MouseEvent<HTMLDivElement>,
   ) {
     event.preventDefault();
-    console.log(event);
+    props.setData(props.message, {
+      clientX: event.clientX,
+      clientY: event.clientY,
+    });
+    props.setView();
+  }
+
+  function handleViewModal(event: React.MouseEvent<HTMLButtonElement>) {
+    props.setData(props.message, {
+      clientX: event.clientX,
+      clientY: event.clientY,
+    });
+    props.setView();
   }
 
   return (
-    <div id="message" key={props.key}>
+    <div
+      onMouseEnter={() => setViewMessageButton(true)}
+      onMouseLeave={() => setViewMessageButton(false)}
+      id="message"
+      key={props.key}
+      style={{
+        flexFlow: props.message.sender === user?.email ? 'row-reverse' : 'row',
+      }}
+    >
       <div
         className="message-content"
         style={{
-          marginLeft: props.sender === user?.email ? 'auto' : '0',
-          background: props.sender === user?.email ? '#f2f2f2' : '',
+          background: props.message.sender === user?.email ? '#f2f2f2' : '',
         }}
-        onMouseEnter={() => setViewMessageButton(true)}
-        onMouseLeave={() => setViewMessageButton(false)}
-        onContextMenu={handleOpenModalByContextMenu}
+        onContextMenu={(event) => handleOpenModalByContextMenu(event)}
+        id={`message-${props.message.id}`}
       >
         <span className="message-text">
-          {props.message}
+          {props.message.message}
 
           <div className="message-time-status">
             <span className="secondary-color">{messageTime}</span>
             <span className="secondary-color">
-              {props.sender === user?.email ? (
-                props.status === 'read' ? (
+              {props.message.sender === user?.email ? (
+                props.message.status === 'read' ? (
                   <ReadIcon />
-                ) : props.status === 'delivered' ? (
+                ) : props.message.status === 'delivered' ? (
                   <DeliveredIcon />
                 ) : (
                   <SentIcon />
@@ -92,13 +89,16 @@ const Message: React.FC<MessageInterface> = ({ ...props }) => {
             </span>
           </div>
         </span>
-        {viewMessageButton ? (
-          <button className="message-button" onClick={handleOpenModal}>
-            <FontAwesomeIcon icon={faChevronDown} color="#6959cd" />
-          </button>
-        ) : null}
       </div>
-      <MessageDataModal modalPosition={modalPosition} />
+      {viewMessageButton ? (
+        <button className="message-button" onClick={handleViewModal}>
+          <FontAwesomeIcon
+            id="message-icon"
+            icon={faChevronDown}
+            color={props.message.sender === user?.email ? '#f2f2f2' : '#fff'}
+          />
+        </button>
+      ) : null}
     </div>
   );
 };

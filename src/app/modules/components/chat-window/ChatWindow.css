@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  max-height: 100%;
   flex: 1;
 }
 
-#chat-window .messages {
+#chat-window #messages {
   background: linear-gradient(to bottom, #b0c4de, #87ceeb);
 
   color: #fff !important;
@@ -14,6 +15,9 @@
   display: flex;
   flex-direction: column-reverse;
   flex: 1;
-
   padding-bottom: 15px;
+
+  position: relative;
+  top: 0;
+  left: 0;
 }

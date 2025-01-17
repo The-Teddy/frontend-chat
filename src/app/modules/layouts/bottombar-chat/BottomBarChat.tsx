@@ -38,6 +38,7 @@ const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
         ...prevState,
         messages: [
           {
+            id: 15,
             sender: user.email,
             message: inputRef.current?.innerText.trim() || '',
             sentAt: new Date(),
@@ -55,6 +56,7 @@ const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
                 ...conv,
                 messages: [
                   {
+                    id: 15,
                     sender: user.email,
                     message: inputRef.current?.innerText.trim() || '',
                     sentAt: new Date(),

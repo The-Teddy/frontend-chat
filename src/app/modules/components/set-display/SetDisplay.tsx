@@ -3,6 +3,7 @@ import './SetDisplay.scss';
 import { Context } from '../../auth/AuthContext';
 import Conversations from '../conversations/Conversations';
 import { handleIsConversationValid } from '../../helpers/validators';
+import ToolsBar from '../../layouts/toolsbar/ToolsBar';
 
 const SetDisplay = () => {
   const { activeDisplay, conversation } = useContext(Context);
@@ -17,6 +18,8 @@ const SetDisplay = () => {
       id="set-display"
       className={isValidConversation ? 'hidden-element-1024' : ''}
     >
+      <ToolsBar />
+
       {activeDisplay === 'conversations' ? (
         <Conversations />
       ) : (

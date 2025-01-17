@@ -7,7 +7,6 @@ import SetDisplay from '../../components/set-display/SetDisplay';
 const Home = () => {
   return (
     <div id="chat">
-      <ToolsBar />
       <SetDisplay />
       <Feed />
     </div>

@@ -314,6 +314,51 @@ function handleMessageTime(date: Date): string {
   const messageTime = sentAtMessageHours + ':' + sentAtMessageMinutes;
   return messageTime;
 }
+function handleModalPosition(
+  position: { clientX: number; clientY: number },
+  id: string,
+): { x: number; y: number } | null {
+  const dynamicModalElement = document.querySelector(id);
+
+  if (!dynamicModalElement) return null;
+
+  const dimensions = dynamicModalElement.getBoundingClientRect();
+
+  const modalWith: number = dimensions.width;
+  const modalHeight: number = dimensions.height;
+
+  const positionY =
+    window.innerHeight - position.clientY < modalHeight
+      ? position.clientY - modalHeight
+      : position.clientY;
+  const positionX =
+    window.innerWidth - position.clientX < modalWith
+      ? position.clientX - modalWith
+      : position.clientX;
+
+  return { x: positionX, y: positionY };
+}
+function handleSettingPositionModal(
+  position: {
+    clientX: number;
+    clientY: number;
+  },
+  id: string,
+): { x: number; y: number } | null {
+  // const dynamicModalElement = document.querySelector(id);
+
+  // if (!dynamicModalElement) return null;
+
+  // const dimensions = dynamicModalElement.getBoundingClientRect();
+
+  // const modalWith: number = dimensions.width;
+  // const modalHeight: number = dimensions.height;
+
+  // const { x, y } = handleModalPosition(position, modalWith, modalHeight);
+
+  // return { x, y };
+  return null;
+}
 
 export {
   handleConverterId,
@@ -339,4 +384,6 @@ export {
   handlePostalCodeMask,
   handleGetDataByPostalCode,
   handleMessageTime,
+  handleModalPosition,
+  handleSettingPositionModal,
 };
