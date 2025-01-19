@@ -41,7 +41,7 @@ const Conversations: React.FC = () => {
 
   return (
     <div id="conversations" className="default-padding-top">
-      <div className="top-bar-conversations">
+      <header className="top-bar-conversations">
         <div className="title-box">
           <h1 className="title">Conversas</h1>
           <button title="Menu" className="button-menu">
@@ -51,7 +51,7 @@ const Conversations: React.FC = () => {
         <div className="filter-box">
           <input type="text" className="input-search" placeholder="Pesquisar" />
         </div>
-      </div>
+      </header>
       <div className="conversations">
         {conversations.length > 0 ? (
           conversations.map((item, index) => (

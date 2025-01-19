@@ -3,6 +3,8 @@ import { UserModel } from '../global/interfaces/UserModel';
 import moment from 'moment';
 import { MessageInterface } from '../global/interfaces/MessageInterface';
 import { ConversationInterface } from '../global/interfaces/ConversationInterface';
+import { handleValidateEmail } from '../helpers/validators';
+import { toast } from 'react-toastify';
 
 interface AuthContextType {
   user: UserModel | null;
@@ -35,12 +37,7 @@ interface AuthContextType {
       | 'settings'
       | 'profile',
   ) => void;
-  // mousePosition: { x: number; y: number } | null;
-  // handleMousePosition: (
-  //   event: React.MouseEvent<HTMLDivElement>,
-  //   width: number,
-  //   height: number,
-  // ) => void;
+  handleLogin: (email: string, password: string) => void;
 }
 const defaultContextValue: AuthContextType = {
   user: null,
@@ -65,8 +62,7 @@ const defaultContextValue: AuthContextType = {
   setConversations: () => {},
   activeDisplay: 'conversations',
   setActiveDisplay: () => {},
-  // mousePosition: null,
-  // handleMousePosition: () => {},
+  handleLogin: () => {},
 };
 
 interface AuthProviderProps {
@@ -368,7 +364,11 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
     },
   ]);
 
-  function handleLogin(email: string, password: string) {}
+  function handleLogin(email: string, password: string) {
+    if (!handleValidateEmail(email)) {
+      return toast.warning('Insira um e-mail válido');
+    }
+  }
   function handleLogout() {}
   function handleGetUser() {}
 
@@ -389,6 +389,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         setConversations,
         activeDisplay,
         setActiveDisplay,
+        handleLogin,
         // mousePosition,
         // handleMousePosition,
       }}

@@ -1,0 +1,36 @@
+$default-border-radius: 8px;
+$default-padding: 10px;
+.auth {
+  background: linear-gradient(to bottom, #b0c4de, #87ceeb);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  max-width: 100%;
+
+  .auth__title {
+    text-align: center;
+    margin-top: 15px;
+    color: #6959cd;
+    font-size: 30px;
+  }
+
+  .auth__subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #757575;
+  }
+}
+.login,
+.register,
+.forgot-password,
+.reset-password {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  background: #fff;
+  border-radius: $default-border-radius;
+  padding: $default-padding;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  padding: 15px 25px 35px 25px;
+}

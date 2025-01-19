@@ -9,12 +9,7 @@ function handleConverterId(binaryId: Buffer | undefined): string {
   )}-${hex?.slice(16, 4)}-${hex?.slice(20)}`;
   return uuid;
 }
-function handleValidateEmail(email: string): boolean {
-  const emailRegex: RegExp =
-    /^(?=[a-zA-Z0-9._%+-]{1,256}@)(?!@)(?!.*@.*@)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  return emailRegex.test(email);
-}
 function handleValidateEmailCode(code: string | null) {
   const codeRegex = /^[0-9]{6}$/;
 
@@ -252,11 +247,6 @@ function handleError(error: any): void {
     }
   }
 }
-function handleValidatePassword(password: string): boolean {
-  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
-
-  return regex.test(password);
-}
 
 function handlePhoneMask(value: string): string {
   // Remove tudo que não for número
@@ -341,7 +331,6 @@ function handleModalPosition(
 
 export {
   handleConverterId,
-  handleValidateEmail,
   handleValidateEmailCode,
   handleIsNumber,
   handleGetEnvVariable,
@@ -357,7 +346,6 @@ export {
   handleIsValidDate,
   convertDateToISO,
   handleError,
-  handleValidatePassword,
   handleGetStaticsHeaders,
   handlePhoneMask,
   handlePostalCodeMask,

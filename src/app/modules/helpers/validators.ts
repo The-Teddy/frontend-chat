@@ -76,7 +76,17 @@ function handleIsConversationValid(
     conversation.messages.length > 0
   );
 }
+function handleValidatePassword(password: string): boolean {
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})/;
 
+  return regex.test(password);
+}
+function handleValidateEmail(email: string): boolean {
+  const emailRegex: RegExp =
+    /^(?=[a-zA-Z0-9._%+-]{1,256}@)(?!@)(?!.*@.*@)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  return emailRegex.test(email);
+}
 export {
   handleValidateCover,
   handleValidateLogo,
@@ -89,4 +99,6 @@ export {
   handleValidateCity,
   handleValidateUF,
   handleIsConversationValid,
+  handleValidatePassword,
+  handleValidateEmail,
 };
