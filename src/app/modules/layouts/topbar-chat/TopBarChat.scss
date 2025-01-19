@@ -1,12 +1,18 @@
 #top-bar-chat {
   background: #fff;
-  position: relative;
   height: 64px;
   padding: 0 15px;
-
   -webkit-box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
   -moz-box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
   box-shadow: 0px 5px 5px 0px rgba(105, 89, 205, 0.3);
+
+  // @media (max-width: 1024px) {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  // }
+
   .top-bar-chat-content {
     height: 100%;
     display: flex;
@@ -28,6 +34,7 @@
       img {
         border-radius: 50%;
         width: 40px;
+        height: 40px;
       }
       .name {
         margin-left: 15px;

@@ -10,16 +10,9 @@ import DynamicModal from '../modals/dynamic-modal/DynamicModal';
 import { handleModalPosition } from '../../helpers/utils';
 
 const ChatWindow = () => {
-  const { conversation, setConversation, setConversations, user } =
-    useContext(Context);
+  const { conversation } = useContext(Context);
   const [loadingMessages, setLoadingMessages] = useState<boolean>(false);
-  const [dataModal, setDataModal] = useState<{
-    message: MessageInterface;
-    position: {
-      x: number;
-      y: number;
-    };
-  } | null>(null);
+
   const [messageData, setMessageData] = useState<MessageInterface>();
   const [viewModal, setViewModal] = useState<boolean>(false);
   const [settingModal, setSettingModal] = useState<{
@@ -64,7 +57,6 @@ const ChatWindow = () => {
       onKeyDown={(e) => (e.key === 'Escape' ? handleViewMessageModal : '')}
     >
       <TopBarChat />
-
       <div id="messages">
         {loadingMessages ? (
           <Load />

@@ -8,8 +8,6 @@ import DeliveredIcon from '../icons/DeliveredIcon';
 import ReadIcon from '../icons/ReadIcon';
 import { handleMessageTime } from '../../helpers/utils';
 import { handleIsConversationValid } from '../../helpers/validators';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 interface Conversation {
   conversation: ConversationInterface;

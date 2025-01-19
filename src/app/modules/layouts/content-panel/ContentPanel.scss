@@ -1,13 +1,10 @@
-#feed {
+.content-panel {
   min-width: 70%;
   flex: 1;
   background: #f2f2f2;
   display: flex;
-  // @media (max-width: 1024px) {
-  //   display: none;
-  // }
 
-  .feed-content {
+  .content-panel-content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -15,14 +12,14 @@
     justify-content: center;
     flex-direction: column;
     padding: 0 15px;
-    .feed-title {
+    .content-panel-title {
       font-size: 30px;
       text-align: center;
       margin: 10px;
       font-weight: 500;
       color: #4f4f4f;
     }
-    .feed-text {
+    .content-panel-text {
       text-align: center;
       color: #4f4f4f;
       word-wrap: break-word;

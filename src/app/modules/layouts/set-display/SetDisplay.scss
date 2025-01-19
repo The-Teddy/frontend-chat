@@ -1,8 +1,12 @@
 #set-display {
-  min-width: 300px;
+  min-width: 350px;
   background: #fff !important;
   flex: 1;
   display: flex;
   background: #fff;
   border-right: 2px solid #f2f2f2;
+
+  @media (max-width: 350px) {
+    min-width: 250px;
+  }
 }

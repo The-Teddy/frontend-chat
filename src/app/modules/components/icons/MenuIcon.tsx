@@ -5,8 +5,8 @@ const MenuIcon = () => {
   return (
     <svg
       viewBox="0 0 24 24"
-      height="24"
-      width="24"
+      height="22"
+      width="22"
       preserveAspectRatio="xMidYMid meet"
       className="icon-default-color"
       version="1.1"

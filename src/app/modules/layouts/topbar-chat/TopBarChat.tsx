@@ -11,7 +11,7 @@ const TopBarChat = () => {
   const { conversation, user, setConversation } = useContext(Context);
 
   return (
-    <div id="top-bar-chat">
+    <div id="top-bar-chat" className="top-bar-chat">
       <div className="top-bar-chat-content">
         <div className="box-name-image">
           <button

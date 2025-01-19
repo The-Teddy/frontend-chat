@@ -1,14 +1,12 @@
-import React from 'react';
 import './Home.scss';
-import ToolsBar from '../../layouts/toolsbar/ToolsBar';
-import Feed from '../../layouts/feed/Feed';
-import SetDisplay from '../../components/set-display/SetDisplay';
+import ContentPanel from '../../layouts/content-panel/ContentPanel';
+import SetDisplay from '../../layouts/set-display/SetDisplay';
 
 const Home = () => {
   return (
     <div id="chat">
       <SetDisplay />
-      <Feed />
+      <ContentPanel />
     </div>
   );
 };

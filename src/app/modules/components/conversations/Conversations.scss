@@ -3,6 +3,10 @@
   flex: 1;
   flex-direction: column;
   overflow: hidden;
+  min-width: 300px;
+  @media (max-width: 300px) {
+    overflow-x: auto;
+  }
 
   .top-bar-conversations {
     z-index: 100;
@@ -64,6 +68,6 @@
     overflow-y: auto;
     scrollbar-width: thin;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 70px;
   }
 }

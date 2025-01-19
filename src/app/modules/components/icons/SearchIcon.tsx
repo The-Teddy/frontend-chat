@@ -5,8 +5,8 @@ const SearchIcon = () => {
   return (
     <svg
       viewBox="0 0 24 24"
-      height="24"
-      width="24"
+      height="22"
+      width="22"
       preserveAspectRatio="xMidYMid meet"
       version="1.1"
       x="0px"

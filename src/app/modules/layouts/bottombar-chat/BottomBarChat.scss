@@ -6,6 +6,9 @@
   display: flex;
   flex-direction: column-reverse;
 
+  @media (max-width: 768px) {
+    padding: 0;
+  }
   .bottombar-chat-content {
     display: flex;
     justify-content: space-around;
@@ -16,7 +19,7 @@
     width: 100%;
 
     .type-box {
-      width: 85%;
+      width: 70%;
 
       background: #fff;
       border-radius: 8px;
@@ -28,6 +31,10 @@
         border: none;
         background: transparent;
         margin-right: 10px;
+
+        @media (max-width: 768px) {
+          margin-right: 0;
+        }
         svg {
           color: #6959cd;
           font-size: 20px;
@@ -45,6 +52,11 @@
       }
     }
 
+    .actions-box {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .action-button {
       border: none;
       margin-bottom: 5px;
@@ -52,6 +64,12 @@
       svg {
         font-size: 25px;
         color: #6959cd;
+        @media (max-width: 768px) {
+          font-size: 22px;
+        }
+        @media (max-width: 350px) {
+          font-size: 17px;
+        }
       }
     }
     .action-button:disabled {

@@ -48,13 +48,13 @@ const ToolsBar: React.FC = () => {
         >
           <StatusIcon />
         </button>
-        <button
+        {/* <button
           title="Conversas Arquivadas"
           className={`side-item ${activeDisplay === 'archived-conversations' ? 'active-item' : ''}`}
           onClick={() => handleCloseChatWindow('archived-conversations')}
         >
           <ArchivedConversationsIcon />
-        </button>
+        </button> */}
         <button
           title="Configurações"
           className={`side-item ${activeDisplay === 'settings' ? 'active-item' : ''}`}
