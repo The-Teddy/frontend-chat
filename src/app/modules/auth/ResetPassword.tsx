@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import '../Auth.scss';
-import SubmitButton from '../../components/buttons/submit/SubmitButton';
+import './Auth.scss';
+import SubmitButton from '../components/buttons/submit/SubmitButton';
 import { NavLink } from 'react-router-dom';
 
 const ResetPassword = () => {
@@ -29,7 +29,7 @@ const ResetPassword = () => {
         <label className="w-100 mt-2">
           Senha:
           <input
-            type="text"
+            type="password"
             className="form-control mt-1"
             placeholder="Digite sua Senha"
             onChange={(e) => setPassword(e.target.value)}
@@ -39,7 +39,7 @@ const ResetPassword = () => {
         <label className="w-100 mt-2">
           Confirmar Senha:
           <input
-            type="text"
+            type="password"
             className="form-control mt-1"
             placeholder="Repita sua Senha"
             onChange={(e) => setConfirmPassword(e.target.value)}

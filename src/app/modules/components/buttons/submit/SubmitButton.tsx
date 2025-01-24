@@ -3,7 +3,7 @@ import './SubmitButton.scss';
 
 interface SubmitButtonInterface {
   title: string;
-  submit: () => void;
+  submit?: () => void;
   disable?: boolean;
 }
 

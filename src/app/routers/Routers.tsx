@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from '../modules/auth/login/Login';
+import Login from '../modules/auth/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from '../modules/pages/home/Home';
-import Register from '../modules/auth/register/Register';
-import ForgotPassword from '../modules/auth/forgot-password/ForgotPassword';
-import ResetPassword from '../modules/auth/reset-password/ResetPassword';
+import Register from '../modules/auth/Register';
+import ForgotPassword from '../modules/auth/ForgotPassword';
+import ResetPassword from '../modules/auth/ResetPassword';
 
 const Routers = () => {
   return (
