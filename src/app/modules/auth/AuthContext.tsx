@@ -1,12 +1,12 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { LoginInterface, RegisterInterface, UserModel } from '../global/interfaces/UserModel';
+import React, { createContext, useState } from 'react';
+import {
+  LoginInterface,
+  RegisterInterface,
+  UserModel,
+} from '../global/interfaces/UserModel';
 import moment from 'moment';
 import { MessageInterface } from '../global/interfaces/MessageInterface';
 import { ConversationInterface } from '../global/interfaces/ConversationInterface';
-import {
-  handleValidateEmail,
-  handleValidatePassword,
-} from '../helpers/validators';
 import { toast } from 'react-toastify';
 import { createUser, login } from '../helpers/api';
 import { handleError } from '../helpers/utils';
@@ -42,8 +42,7 @@ interface AuthContextType {
       | 'settings'
       | 'profile',
   ) => void;
-  handleLogin: (email: string, password: string) => void;
-  handleRegister: (email: string, name: string, password:string, confirmPassword: string ) => void;
+  handleLogin: (data: LoginInterface) => void;
 }
 const defaultContextValue: AuthContextType = {
   user: null,
@@ -69,7 +68,6 @@ const defaultContextValue: AuthContextType = {
   activeDisplay: 'conversations',
   setActiveDisplay: () => {},
   handleLogin: () => {},
-  handleRegister: ()=>{}
 };
 
 interface AuthProviderProps {
@@ -367,17 +365,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
     },
   ]);
 
-  function handleLogin(email: string, password: string) {
-    if (!handleValidateEmail(email)) {
-      return toast.warning('Insira um e-mail válido');
-    }
-    if (!handleValidatePassword(password)) {
-      return toast.warning('Insira uma senha válida');
-    }
-    const data: LoginInterface = {
-      email,
-      password,
-    };
+  function handleLogin(data: LoginInterface) {
     login(data)
       .then((res) => {
         toast.success('Login efetuado com sucesso');
@@ -391,29 +379,6 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
   }
   function handleLogout() {}
   function handleGetUser() {}
-  function handleRegister(email: string, name: string, password: string, confirmPassword: string){
-    if(name.trim().length < 3) {
-      return toast.warning("O nome precisa ter no minímo 3 caracteres")
-    }
-    if (!handleValidateEmail(email)) {
-      return toast.warning('Insira um e-mail válido');
-    }
-    if (!handleValidatePassword(password)) {
-      return toast.warning('Insira uma senha válida');
-    }
-    if(password !== confirmPassword) {
-      return toast.warning("Senha e Confirmar Senha precisam ser iguais")
-    }
-    const data: RegisterInterface = {
-      name, email, password
-    }
-    createUser(data).then((res)=>{
-      console.log(res)
-    }).catch((error)=>{
-      console.log(error)
-      handleError(error)
-    }).finally(()=>{})
-  }
 
   // useEffect(() => {
   //   document.addEventListener('mousemove', handleMouseMove);
@@ -433,7 +398,6 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         activeDisplay,
         setActiveDisplay,
         handleLogin,
-        handleRegister
       }}
     >
       {children}

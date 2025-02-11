@@ -14,6 +14,7 @@ export interface LoginInterface {
 }
 export interface RegisterInterface {
   name: string;
+  username: string;
   email: string;
   password: string;
 }

@@ -5,6 +5,7 @@ interface SubmitButtonInterface {
   title: string;
   submit?: () => void;
   disable?: boolean;
+  loading?: boolean;
 }
 
 const SubmitButton: React.FC<SubmitButtonInterface> = ({ ...props }) => {
@@ -14,7 +15,12 @@ const SubmitButton: React.FC<SubmitButtonInterface> = ({ ...props }) => {
       className="submit-button"
       disabled={props.disable}
     >
-      {props.title}
+      {!props.loading && props.title}
+      {props.loading && (
+        <span className="indicator-progress" style={{ display: 'block' }}>
+          <span className="spinner-border spinner-border-md align-midle ms-2 text-white"></span>
+        </span>
+      )}
     </button>
   );
 };

@@ -1,14 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import './Auth.scss';
 import { NavLink } from 'react-router-dom';
 import SubmitButton from '../components/buttons/submit/SubmitButton';
 import { Context } from './AuthContext';
+import {
+  handleValidateEmail,
+  handleValidatePassword,
+} from '../helpers/validators/authValidators';
+import { LoginInterface } from '../global/interfaces/UserModel';
 
 const Login = () => {
   const { handleLogin } = useContext(Context);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  function handleValidateLogin(event: React.FormEvent) {
+    event.preventDefault();
+    if (!handleValidateEmail(email)) {
+      return toast.warning('Insira um e-mail válido');
+    }
+    if (!handleValidatePassword(password)) {
+      return toast.warning('Insira uma senha válida');
+    }
+    const data: LoginInterface = {
+      email,
+      password,
+    };
+    handleLogin(data);
+  }
   return (
     <div className="auth">
       <div className="login">
@@ -18,9 +38,8 @@ const Login = () => {
           <NavLink to={'/register'}>Registre-se</NavLink>
         </h2>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleLogin(email, password);
+          onSubmit={(event) => {
+            handleValidateLogin(event);
           }}
         >
           <label htmlFor="" className="w-100 mt-3">

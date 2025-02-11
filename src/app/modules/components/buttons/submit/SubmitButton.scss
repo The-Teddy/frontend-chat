@@ -8,6 +8,9 @@
   border-radius: 8px;
   font-weight: 500;
 }
+.submit-button[disabled] {
+  opacity: 0.5 !important;
+}
 .submit-button:hover {
   opacity: 0.85;
   scale: 0.99;

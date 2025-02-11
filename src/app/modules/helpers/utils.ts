@@ -225,26 +225,55 @@ function handleIsLeapYear(year: number): boolean {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
 }
 function handleError(error: any): void {
-  if (error.response && error.response.data) {
-    if (Array.isArray(error.response.data.message)) {
-      const errors = error.response.data.message;
+  if (!error.response) {
+    toast.error('Erro de conexão. Verifique sua internet.');
+    return;
+  }
 
-      const showNextError = () => {
-        if (errors.length > 0) {
-          const nextError = errors.shift(); // Pega o primeiro erro da lista
-          toast.error(nextError); // Exibe o erro
+  const { status, data } = error.response;
 
-          setTimeout(() => {
-            showNextError(); // Mostra o próximo erro após 3 segundos (por exemplo)
-          }, 3000); // 3 segundos de delay entre os erros
-        }
-      };
-      showNextError();
-    } else if (typeof error.response.data.message === 'string') {
-      toast.error(error.response.data.message);
-    } else {
+  // Se o Flask retornou uma lista de mensagens (ex: erros de validação)
+  if (data && Array.isArray(data.message)) {
+    data.message.forEach((item: any) => {
+      if (item.message) {
+        toast.error(
+          item.message.replace('Value error, ', '') || 'Erro desconhecido.',
+        );
+      } else {
+        toast.error(item || 'Erro desconhecido');
+      }
+    });
+    return;
+  }
+
+  // Se a mensagem for uma string simples
+  if (typeof data?.message === 'string') {
+    toast.error(data.message);
+    return;
+  }
+
+  // Tratamento baseado no status HTTP
+  switch (status) {
+    case 400:
+      toast.error('Requisição inválida. Verifique os dados enviados.');
+      break;
+    case 401:
+      toast.error('Não autorizado. Faça login novamente.');
+      break;
+    case 403:
+      toast.error('Acesso proibido.');
+      break;
+    case 404:
+      toast.error('Recurso não encontrado.');
+      break;
+    case 422:
+      toast.error('Erro de validação. Verifique os campos preenchidos.');
+      break;
+    case 500:
+      toast.error('Erro interno do servidor. Tente novamente mais tarde.');
+      break;
+    default:
       toast.error('Ocorreu um erro inesperado.');
-    }
   }
 }
 
