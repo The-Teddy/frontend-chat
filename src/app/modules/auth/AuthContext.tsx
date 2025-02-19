@@ -1,74 +1,14 @@
 import React, { createContext, useState } from 'react';
-import {
-  LoginInterface,
-  RegisterInterface,
-  UserModel,
-} from '../global/interfaces/UserModel';
+import { LoginInterface, UserModel } from '../global/interfaces/UserModel';
 import moment from 'moment';
 import { MessageInterface } from '../global/interfaces/MessageInterface';
 import { ConversationInterface } from '../global/interfaces/ConversationInterface';
 import { toast } from 'react-toastify';
-import { createUser, login } from '../helpers/api';
-import { handleError } from '../helpers/utils';
+import { login } from '../helpers/api/AuthEndpoints';
 
-interface AuthContextType {
-  user: UserModel | null;
-  token: string;
-  isAuthenticated: boolean;
-  loading: boolean;
-  conversations: {
-    id?: number;
-    pathImage: string;
-    name: string;
-    date: string;
-    messages: MessageInterface[];
-  }[];
-  conversation: ConversationInterface;
-  setConversation: React.Dispatch<React.SetStateAction<ConversationInterface>>;
-  setConversations: React.Dispatch<
-    React.SetStateAction<ConversationInterface[]>
-  >;
-  activeDisplay:
-    | 'conversations'
-    | 'status'
-    | 'archived-conversations'
-    | 'settings'
-    | 'profile';
-  setActiveDisplay: (
-    display:
-      | 'conversations'
-      | 'status'
-      | 'archived-conversations'
-      | 'settings'
-      | 'profile',
-  ) => void;
-  handleLogin: (data: LoginInterface) => void;
-}
-const defaultContextValue: AuthContextType = {
-  user: null,
-  token: '',
-  isAuthenticated: false,
-  loading: false,
-  conversations: [
-    {
-      pathImage: '',
-      name: '',
-      date: '',
-      messages: [],
-    },
-  ],
-  conversation: {
-    pathImage: '',
-    name: '',
-    date: '',
-    messages: [],
-  },
-  setConversation: () => {},
-  setConversations: () => {},
-  activeDisplay: 'conversations',
-  setActiveDisplay: () => {},
-  handleLogin: () => {},
-};
+import { handleError } from '../helpers/utils';
+import { AuthContextType } from './Interfaces';
+import { defaultContextValue } from './Defaults';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -366,6 +306,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
   ]);
 
   function handleLogin(data: LoginInterface) {
+    setLoading(true);
     login(data)
       .then((res) => {
         toast.success('Login efetuado com sucesso');
@@ -375,7 +316,9 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         console.log(error);
         handleError(error);
       })
-      .finally(() => {});
+      .finally(() => {
+        setLoading(false);
+      });
   }
   function handleLogout() {}
   function handleGetUser() {}

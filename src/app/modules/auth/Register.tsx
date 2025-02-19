@@ -8,7 +8,7 @@ import {
   handleValidateUsername,
 } from '../helpers/validators/authValidators';
 import { RegisterInterface } from '../global/interfaces/UserModel';
-import { createUser, usernameValidate } from '../helpers/api';
+import { createUser, usernameValidate } from '../helpers/api/UserEnpoints';
 import { handleError } from '../helpers/utils';
 
 const Register = () => {
@@ -48,7 +48,7 @@ const Register = () => {
     }
     setLoading(true);
     createUser(data)
-      .then((res) => {
+      .then(() => {
         toast.success('Usuário criado com sucesso');
         navigate('/login');
       })

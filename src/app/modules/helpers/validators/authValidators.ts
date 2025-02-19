@@ -3,7 +3,7 @@ import { RegisterInterface } from '../../global/interfaces/UserModel';
 
 function handleValidatePassword(password: string): boolean {
   const passwordRegex: RegExp =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*()]){8,30}/;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%&*()=;?]){8,30}/;
 
   const match: boolean = passwordRegex.test(password);
 

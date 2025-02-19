@@ -6,6 +6,7 @@ import Home from '../modules/pages/home/Home';
 import Register from '../modules/auth/Register';
 import ForgotPassword from '../modules/auth/ForgotPassword';
 import ResetPassword from '../modules/auth/ResetPassword';
+import EmailVerification from '../modules/auth/EmailVerification';
 
 const Routers = () => {
   return (
@@ -16,6 +17,10 @@ const Routers = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route
+          path="/email-verification/:token"
+          element={<EmailVerification />}
+        />
       </Routes>
     </>
   );

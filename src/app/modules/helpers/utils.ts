@@ -232,23 +232,21 @@ function handleError(error: any): void {
 
   const { status, data } = error.response;
 
-  // Se o Flask retornou uma lista de mensagens (ex: erros de validação)
-  if (data && Array.isArray(data.message)) {
-    data.message.forEach((item: any) => {
-      if (item.message) {
-        toast.error(
-          item.message.replace('Value error, ', '') || 'Erro desconhecido.',
-        );
-      } else {
-        toast.error(item || 'Erro desconhecido');
+  // Se a resposta do FastAPI tiver um array de detalhes (erros de validação)
+  if (data?.detail.errors && Array.isArray(data.detail.errors)) {
+    data.detail.errors.forEach((item: any) => {
+      if (item.msg) {
+        toast.error(item.msg);
+      } else if (typeof item === 'string') {
+        toast.error(item);
       }
     });
     return;
   }
 
-  // Se a mensagem for uma string simples
-  if (typeof data?.message === 'string') {
-    toast.error(data.message);
+  // Se a mensagem de erro for uma string simples
+  if (typeof data?.detail.errors === 'string') {
+    toast.error(data.detail.errors);
     return;
   }
 

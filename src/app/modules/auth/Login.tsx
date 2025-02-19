@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { toast } from 'react-toastify';
 import './Auth.scss';
 import { NavLink } from 'react-router-dom';
 import SubmitButton from '../components/buttons/submit/SubmitButton';
@@ -11,18 +10,14 @@ import {
 import { LoginInterface } from '../global/interfaces/UserModel';
 
 const Login = () => {
-  const { handleLogin } = useContext(Context);
+  const { handleLogin, loading } = useContext(Context);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
   function handleValidateLogin(event: React.FormEvent) {
     event.preventDefault();
-    if (!handleValidateEmail(email)) {
-      return toast.warning('Insira um e-mail válido');
-    }
-    if (!handleValidatePassword(password)) {
-      return toast.warning('Insira uma senha válida');
-    }
+    if (!handleValidateEmail(email)) return;
+    if (!handleValidatePassword(password)) return;
     const data: LoginInterface = {
       email,
       password,
@@ -63,7 +58,7 @@ const Login = () => {
             />
           </label>
 
-          <SubmitButton title="Entrar" />
+          <SubmitButton title="Entrar" disable={loading} loading={loading} />
         </form>
         <p className="text-center mt-3">
           <NavLink to={'/forgot-password'}>Esqueci Senha</NavLink>
