@@ -5,7 +5,6 @@ import { LoginInterface, UserModel } from '../global/interfaces/UserModel';
 export interface AuthContextType {
   user: UserModel | null;
   token: string;
-  isAuthenticated: boolean;
   loading: boolean;
   conversations: {
     id?: number;
@@ -34,4 +33,5 @@ export interface AuthContextType {
       | 'profile',
   ) => void;
   handleLogin: (data: LoginInterface) => void;
+  handleLogout: () => void;
 }

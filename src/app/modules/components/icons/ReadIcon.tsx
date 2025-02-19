@@ -1,6 +1,6 @@
 import { faCheckDouble } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import { memo } from 'react';
 
 const ReadIcon = () => {
   return (
@@ -10,4 +10,4 @@ const ReadIcon = () => {
   );
 };
 
-export default ReadIcon;
+export default memo(ReadIcon);

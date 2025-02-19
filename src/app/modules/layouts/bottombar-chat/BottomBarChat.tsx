@@ -9,7 +9,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ConversationInterface } from '../../global/interfaces/ConversationInterface';
 import { Context } from '../../auth/AuthContext';
-import moment from 'moment';
 
 interface conversationChatInterface {
   conversation: ConversationInterface | null;

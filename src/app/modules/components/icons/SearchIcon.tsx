@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import './Icons.scss';
 
 const SearchIcon = () => {
@@ -11,7 +11,7 @@ const SearchIcon = () => {
       version="1.1"
       x="0px"
       y="0px"
-      enable-background="new 0 0 24 24"
+      enableBackground="new 0 0 24 24"
       className="search-icon icon-default-color"
     >
       <path
@@ -22,4 +22,4 @@ const SearchIcon = () => {
   );
 };
 
-export default SearchIcon;
+export default memo(SearchIcon);

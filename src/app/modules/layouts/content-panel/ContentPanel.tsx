@@ -5,7 +5,7 @@ import { Context } from '../../auth/AuthContext';
 import { handleIsConversationValid } from '../../helpers/validators';
 
 const ContentPanel = () => {
-  const { conversation, user } = useContext(Context);
+  const { conversation } = useContext(Context);
   const [isValidConversation, setIsValidConversation] =
     useState<boolean>(false);
 

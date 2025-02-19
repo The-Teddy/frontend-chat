@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { LoginInterface, UserModel } from '../global/interfaces/UserModel';
 import moment from 'moment';
 import { MessageInterface } from '../global/interfaces/MessageInterface';
@@ -17,16 +17,9 @@ interface AuthProviderProps {
 const Context = createContext<AuthContextType>(defaultContextValue);
 
 const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<UserModel | null>({
-    name: 'Marcio Santos',
-    email: 'marcio@gmail.com',
-    role: 'user',
-    emailVerified: true,
-  });
+  const [user, setUser] = useState<UserModel | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [token, setToken] = useState<string>('');
-  const [isAuthenticated, setAuthenticated] = useState<boolean>(false);
-  const [emailNotVerified, setEmailNotVerified] = useState<boolean>(false);
 
   const [conversation, setConversation] = useState<ConversationInterface>({
     pathImage: '',
@@ -310,7 +303,10 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
     login(data)
       .then((res) => {
         toast.success('Login efetuado com sucesso');
-        console.log(res);
+        setToken(res.data.access_token);
+        setUser(res.data.data);
+        localStorage.setItem('token', res.data.access_token);
+        localStorage.setItem('userData', JSON.stringify(res.data.data));
       })
       .catch((error) => {
         console.log(error);
@@ -320,19 +316,32 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         setLoading(false);
       });
   }
-  function handleLogout() {}
+  function handleLogout(): void {
+    setToken('');
+    setUser(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userData');
+  }
   function handleGetUser() {}
 
-  // useEffect(() => {
-  //   document.addEventListener('mousemove', handleMouseMove);
-  // }, []);
+  useEffect(() => {
+    try {
+      const storedToken = localStorage.getItem('token') || '';
+      const userData = localStorage.getItem('userData');
+
+      console.log(storedToken);
+      setToken(storedToken);
+      setUser(userData && JSON.parse(userData));
+    } catch (error) {
+      console.log(`Erro ao carregar os dados iniciais: ${error}`);
+    }
+  }, []);
 
   return (
     <Context.Provider
       value={{
         user,
         token,
-        isAuthenticated,
         loading,
         conversations,
         conversation,
@@ -341,6 +350,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         activeDisplay,
         setActiveDisplay,
         handleLogin,
+        handleLogout,
       }}
     >
       {children}

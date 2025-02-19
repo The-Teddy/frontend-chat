@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import './Icons.scss';
 
 const MenuIcon = () => {
@@ -22,4 +22,4 @@ const MenuIcon = () => {
   );
 };
 
-export default MenuIcon;
+export default memo(MenuIcon);

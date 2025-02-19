@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const SettingsIcon = () => {
   return (
@@ -40,4 +40,4 @@ const SettingsIcon = () => {
   );
 };
 
-export default SettingsIcon;
+export default memo(SettingsIcon);

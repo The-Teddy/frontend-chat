@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const StatusIcon = () => {
   return (
@@ -14,7 +14,7 @@ const StatusIcon = () => {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         fill="none"
       ></circle>
       <circle cx="12" cy="12" r="6" fill="currentColor"></circle>
@@ -22,4 +22,4 @@ const StatusIcon = () => {
   );
 };
 
-export default StatusIcon;
+export default memo(StatusIcon);

@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import './Icons.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -11,4 +11,4 @@ const SentIcon = () => {
   );
 };
 
-export default SentIcon;
+export default memo(SentIcon);

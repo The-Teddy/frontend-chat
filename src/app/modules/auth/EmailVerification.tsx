@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { verify_email } from '../helpers/api/UserEnpoints';
 import { toast } from 'react-toastify';
 import { resend_token } from '../helpers/api/EmailEndepoints';
-import { Load } from '../partials/Spinner';
+import Load from '../components/spinner/Spinner';
 
 const EmailVerification = () => {
   const { token } = useParams();

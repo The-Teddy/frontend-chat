@@ -24,6 +24,7 @@ const Login = () => {
     };
     handleLogin(data);
   }
+
   return (
     <div className="auth">
       <div className="login">

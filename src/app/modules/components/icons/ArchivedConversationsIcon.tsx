@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 const ArchivedConversationsIcon = () => {
   return (
@@ -18,4 +18,4 @@ const ArchivedConversationsIcon = () => {
   );
 };
 
-export default ArchivedConversationsIcon;
+export default memo(ArchivedConversationsIcon);

@@ -1,0 +1,21 @@
+.profile {
+  flex: 1;
+  display: flex;
+
+  justify-content: end;
+  flex-direction: column;
+
+  .logout {
+    height: 40px;
+    margin: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #1c1c1c;
+    color: #fff;
+  }
+  .logout:hover {
+    scale: 0.95;
+    opacity: 0.85;
+    transition: 1s all ease;
+  }
+}

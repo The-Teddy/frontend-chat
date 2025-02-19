@@ -4,7 +4,7 @@ import TopBarChat from '../../layouts/topbar-chat/TopBarChat';
 import BottomBarChat from '../../layouts/bottombar-chat/BottomBarChat';
 import { Context } from '../../auth/AuthContext';
 import Message from '../message/Message';
-import { Load } from '../spinner/Spinner';
+import Load from '../spinner/Spinner';
 import { MessageInterface } from '../../global/interfaces/MessageInterface';
 import DynamicModal from '../modals/dynamic-modal/DynamicModal';
 import { handleModalPosition } from '../../helpers/utils';
@@ -19,13 +19,6 @@ const ChatWindow = () => {
     y: number;
     x: number;
   } | null>(null);
-
-  // useEffect(() => {
-  //   setLoadingMessages(true);
-  //   setTimeout(() => {
-  //     setLoadingMessages(false);
-  //   }, 1000);
-  // }, [conversation]);
 
   function handleViewMessageModal(event: React.MouseEvent<HTMLDivElement>) {
     const target = event.target as HTMLDivElement;

@@ -4,6 +4,7 @@ import { Context } from '../../auth/AuthContext';
 import Conversations from '../../components/conversations/Conversations';
 import { handleIsConversationValid } from '../../helpers/validators';
 import ToolsBar from '../toolsbar/ToolsBar';
+import Profile from '../../components/profile/Profile';
 
 const SetDisplay = () => {
   const { activeDisplay, conversation } = useContext(Context);
@@ -13,6 +14,7 @@ const SetDisplay = () => {
   useEffect(() => {
     setIsValidConversation(handleIsConversationValid(conversation));
   }, [conversation]);
+
   return (
     <div
       id="set-display"
@@ -20,11 +22,7 @@ const SetDisplay = () => {
     >
       <ToolsBar />
 
-      {activeDisplay === 'conversations' ? (
-        <Conversations />
-      ) : (
-        <h1>Ta indo ainda kkkk</h1>
-      )}
+      {activeDisplay === 'conversations' ? <Conversations /> : <Profile />}
     </div>
   );
 };

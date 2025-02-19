@@ -1,4 +1,4 @@
-import { Spinner, SpinnerProps } from "react-bootstrap";
+import { Spinner, SpinnerProps } from 'react-bootstrap';
 
 const Load: React.FC<SpinnerProps & React.RefAttributes<unknown>> = () => {
   return (
@@ -8,4 +8,4 @@ const Load: React.FC<SpinnerProps & React.RefAttributes<unknown>> = () => {
     </div>
   );
 };
-export { Load };
+export default Load;

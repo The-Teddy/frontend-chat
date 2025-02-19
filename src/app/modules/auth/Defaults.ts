@@ -3,7 +3,6 @@ import { AuthContextType } from './Interfaces';
 export const defaultContextValue: AuthContextType = {
   user: null,
   token: '',
-  isAuthenticated: false,
   loading: false,
   conversations: [
     {
@@ -24,4 +23,5 @@ export const defaultContextValue: AuthContextType = {
   activeDisplay: 'conversations',
   setActiveDisplay: () => {},
   handleLogin: () => {},
+  handleLogout: () => {},
 };

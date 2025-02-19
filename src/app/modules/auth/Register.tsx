@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Auth.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import SubmitButton from '../components/buttons/submit/SubmitButton';
-import { toast, ToastContent } from 'react-toastify';
+import { toast } from 'react-toastify';
 import {
   handleValidateRegister,
   handleValidateUsername,
@@ -27,11 +27,12 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  function handleRegister(event: React.FormEvent): void | ToastContent {
+  function handleRegister(event: React.FormEvent): void {
     event.preventDefault();
 
     if (hasUsername === 'indisponible') {
-      return toast.warning('Nome de usuário não disponível');
+      toast.warning('Nome de usuário não disponível');
+      return;
     }
     const data: RegisterInterface = {
       email: email,

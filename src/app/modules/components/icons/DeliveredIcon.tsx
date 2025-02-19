@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import './Icons.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckDouble } from '@fortawesome/free-solid-svg-icons';
@@ -10,4 +10,4 @@ const DeliveredIcon = () => {
   );
 };
 
-export default DeliveredIcon;
+export default memo(DeliveredIcon);
