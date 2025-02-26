@@ -18,6 +18,8 @@ export interface AuthContextType {
   setConversations: React.Dispatch<
     React.SetStateAction<ConversationInterface[]>
   >;
+  setUser: React.Dispatch<React.SetStateAction<UserModel | null>>;
+
   activeDisplay:
     | 'conversations'
     | 'status'

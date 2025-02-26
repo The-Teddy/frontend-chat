@@ -6,7 +6,7 @@ import { Context } from './AuthContext';
 import {
   handleValidateEmail,
   handleValidatePassword,
-} from '../helpers/validators/authValidators';
+} from '../helpers/validators/AuthValidators';
 import { LoginInterface } from '../global/interfaces/UserModel';
 
 const Login = () => {

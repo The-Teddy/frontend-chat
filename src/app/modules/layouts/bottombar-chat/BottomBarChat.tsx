@@ -88,8 +88,8 @@ const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
   }, [props.conversation]);
 
   return (
-    <footer id="bottombar-chat">
-      <div className="bottombar-chat-content">
+    <footer id="bottombar-chat" className="bottombar-chat">
+      <div className="bottombar-chat__content">
         <button className="attach-files action-button">
           <FontAwesomeIcon icon={faPaperclip} />
         </button>

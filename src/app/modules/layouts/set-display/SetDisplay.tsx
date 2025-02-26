@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './SetDisplay.scss';
 import { Context } from '../../auth/AuthContext';
 import Conversations from '../../components/conversations/Conversations';
-import { handleIsConversationValid } from '../../helpers/validators';
+import { handleIsConversationValid } from '../../helpers/Validators';
 import ToolsBar from '../toolsbar/ToolsBar';
 import Profile from '../../components/profile/Profile';
 

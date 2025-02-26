@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 import {
   handleValidateRegister,
   handleValidateUsername,
-} from '../helpers/validators/authValidators';
+} from '../helpers/validators/AuthValidators';
 import { RegisterInterface } from '../global/interfaces/UserModel';
 import { createUser, usernameValidate } from '../helpers/api/UserEnpoints';
-import { handleError } from '../helpers/utils';
+import { handleError } from '../helpers/utils/Requests';
 
 const Register = () => {
   const [name, setName] = useState<string>('');

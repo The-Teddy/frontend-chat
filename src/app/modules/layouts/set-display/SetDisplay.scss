@@ -9,4 +9,16 @@
   @media (max-width: 350px) {
     min-width: 250px;
   }
+
+  .profile,
+  .conversations {
+    max-width: 350px;
+  }
+
+  @media (max-width: 1024px) {
+    .profile,
+    .conversations {
+      max-width: 100%;
+    }
+  }
 }

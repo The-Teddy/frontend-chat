@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { handleGetHeaders, handleGetStaticsHeaders } from '../utils';
+import { handleGetHeaders } from '../utils/Requests';
 import { LoginInterface } from '../../global/interfaces/UserModel';
 import axios from './Api';
 

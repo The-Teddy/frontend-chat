@@ -20,6 +20,7 @@ export const defaultContextValue: AuthContextType = {
   },
   setConversation: () => {},
   setConversations: () => {},
+  setUser: () => {},
   activeDisplay: 'conversations',
   setActiveDisplay: () => {},
   handleLogin: () => {},

@@ -18,7 +18,7 @@ const SubmitButton: React.FC<SubmitButtonInterface> = ({ ...props }) => {
       {!props.loading && props.title}
       {props.loading && (
         <span className="indicator-progress" style={{ display: 'block' }}>
-          <span className="spinner-border spinner-border-md align-midle ms-2 text-white"></span>
+          <span className="spinner-border spinner-border-sm align-midle ms-2 text-white"></span>
         </span>
       )}
     </button>

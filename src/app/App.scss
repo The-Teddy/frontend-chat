@@ -32,3 +32,15 @@ span,
 h1 {
   color: #333333;
 }
+.title-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  background: #fff !important;
+}
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  color: #6959cd !important;
+}

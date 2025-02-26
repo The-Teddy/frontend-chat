@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './ContentPanel.scss';
 import ChatWindow from '../../components/chat-window/ChatWindow';
 import { Context } from '../../auth/AuthContext';
-import { handleIsConversationValid } from '../../helpers/validators';
+import { handleIsConversationValid } from '../../helpers/Validators';
 
 const ContentPanel = () => {
   const { conversation } = useContext(Context);

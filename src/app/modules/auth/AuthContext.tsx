@@ -6,7 +6,7 @@ import { ConversationInterface } from '../global/interfaces/ConversationInterfac
 import { toast } from 'react-toastify';
 import { login } from '../helpers/api/AuthEndpoints';
 
-import { handleError } from '../helpers/utils';
+import { handleError } from '../helpers/utils/Requests';
 import { AuthContextType } from './Interfaces';
 import { defaultContextValue } from './Defaults';
 
@@ -321,6 +321,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     localStorage.removeItem('token');
     localStorage.removeItem('userData');
+    setActiveDisplay('conversations');
   }
   function handleGetUser() {}
 
@@ -329,13 +330,16 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
       const storedToken = localStorage.getItem('token') || '';
       const userData = localStorage.getItem('userData');
 
-      console.log(storedToken);
       setToken(storedToken);
       setUser(userData && JSON.parse(userData));
     } catch (error) {
       console.log(`Erro ao carregar os dados iniciais: ${error}`);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(user));
+  }, [user]);
 
   return (
     <Context.Provider
@@ -345,10 +349,11 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
         loading,
         conversations,
         conversation,
+        activeDisplay,
         setConversation,
         setConversations,
-        activeDisplay,
         setActiveDisplay,
+        setUser,
         handleLogin,
         handleLogout,
       }}

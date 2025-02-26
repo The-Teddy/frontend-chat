@@ -7,7 +7,7 @@ import Message from '../message/Message';
 import Load from '../spinner/Spinner';
 import { MessageInterface } from '../../global/interfaces/MessageInterface';
 import DynamicModal from '../modals/dynamic-modal/DynamicModal';
-import { handleModalPosition } from '../../helpers/utils';
+import { handleModalPosition } from '../../helpers/utils/Dates';
 
 const ChatWindow = () => {
   const { conversation } = useContext(Context);

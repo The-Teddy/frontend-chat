@@ -40,7 +40,7 @@ const Conversations: React.FC = () => {
   }
 
   return (
-    <div id="conversations" className="default-padding-top">
+    <div id="conversations" className="conversations default-padding-top">
       <header className="top-bar-conversations">
         <div className="title-box">
           <h1 className="title">Conversas</h1>

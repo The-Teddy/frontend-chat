@@ -1,4 +1,4 @@
-#bottombar-chat {
+.bottombar-chat {
   background: #f2f2f2;
   min-height: 62px;
   padding: 0 15px;
@@ -9,7 +9,7 @@
   @media (max-width: 768px) {
     padding: 0;
   }
-  .bottombar-chat-content {
+  .bottombar-chat__content {
     display: flex;
     justify-content: space-around;
     align-items: end;

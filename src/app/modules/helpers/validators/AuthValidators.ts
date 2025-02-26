@@ -32,12 +32,12 @@ function handleValidateEmail(email: string): boolean {
   return match;
 }
 function handleValidateName(name: string): boolean {
-  const nameRegex: RegExp = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{3,100}$/;
+  const nameRegex: RegExp = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{3,30}$/;
 
   const match: boolean = nameRegex.test(name.trim());
   if (!match) {
     toast.warning(
-      'O nome deve ter entre 3 e 100 caracteres e conter apenas letras (incluindo acentuadas) e espaços',
+      'O nome deve ter entre 3 e 30 caracteres e conter apenas letras (incluindo acentuadas) e espaços',
     );
     return match;
   }
@@ -45,12 +45,12 @@ function handleValidateName(name: string): boolean {
   return match;
 }
 function handleValidateUsername(username: string): boolean {
-  const usernameRegex: RegExp = /^[A-Za-z0-9._]{3,50}$/;
+  const usernameRegex: RegExp = /^[A-Za-z0-9._]{3,25}$/;
 
   const match: boolean = usernameRegex.test(username.trim());
   if (!match) {
     toast.warning(
-      'O nome de usuário deve ter entre 3 e 50 caracteres, sem espaços, contendo apenas letras de A a Z e números.',
+      'O nome de usuário deve ter entre 3 e 25 caracteres, sem espaços, contendo apenas letras de A a Z e números.',
     );
     return match;
   }

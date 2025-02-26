@@ -5,7 +5,7 @@ import { Context } from '../../auth/AuthContext';
 import ReadIcon from '../icons/ReadIcon';
 import DeliveredIcon from '../icons/DeliveredIcon';
 import SentIcon from '../icons/SentIcon';
-import { handleMessageTime } from '../../helpers/utils';
+import { handleMessageTime } from '../../helpers/utils/Dates';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,12 +1,17 @@
 export interface UserModel {
-  // id: Buffer;
   name: string;
   email: string;
   role: string;
-  emailVerified: boolean;
-  // birthDate: Date;
-  // createdAt: Date;
-  // isActive: boolean;
+  emailVerified: Date | null;
+  photo: string | null;
+  status: string | null;
+  bio: string | null;
+  lastLogin: Date | null;
+  isActive: boolean;
+  contacts: string[];
+  blockeds: string[];
+  cretedAt: Date;
+  updatedAt: Date;
 }
 export interface LoginInterface {
   email: string;

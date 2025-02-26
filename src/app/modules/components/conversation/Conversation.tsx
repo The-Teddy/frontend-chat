@@ -6,8 +6,8 @@ import { MessageInterface } from '../../global/interfaces/MessageInterface';
 import SentIcon from '../icons/SentIcon';
 import DeliveredIcon from '../icons/DeliveredIcon';
 import ReadIcon from '../icons/ReadIcon';
-import { handleMessageTime } from '../../helpers/utils';
-import { handleIsConversationValid } from '../../helpers/validators';
+import { handleMessageTime } from '../../helpers/utils/Dates';
+import { handleIsConversationValid } from '../../helpers/Validators';
 
 interface Conversation {
   conversation: ConversationInterface;
