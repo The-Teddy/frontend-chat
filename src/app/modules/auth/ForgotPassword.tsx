@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Auth.scss';
 import SubmitButton from '../components/buttons/submit/SubmitButton';
 import { NavLink } from 'react-router-dom';

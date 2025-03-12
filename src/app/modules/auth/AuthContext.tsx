@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { LoginInterface, UserModel } from '../global/interfaces/UserModel';
 import moment from 'moment';
-import { MessageInterface } from '../global/interfaces/MessageInterface';
 import { ConversationInterface } from '../global/interfaces/ConversationInterface';
 import { toast } from 'react-toastify';
 import { login } from '../helpers/api/AuthEndpoints';
@@ -323,7 +322,7 @@ const AuthContext: React.FC<AuthProviderProps> = ({ children }) => {
     localStorage.removeItem('userData');
     setActiveDisplay('conversations');
   }
-  function handleGetUser() {}
+  // function handleGetUser() {}
 
   useEffect(() => {
     try {

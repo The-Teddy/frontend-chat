@@ -1,8 +1,16 @@
 import React from 'react';
 import './BackButton.scss';
 
-const BackButton = () => {
-  return <div>BackButton</div>;
+interface BackButtonInterface {
+  title: string;
+  submit: () => void;
+}
+const BackButton: React.FC<BackButtonInterface> = ({ ...props }) => {
+  return (
+    <button className="back-button" onClick={() => props.submit()}>
+      {props.title}
+    </button>
+  );
 };
 
 export default BackButton;

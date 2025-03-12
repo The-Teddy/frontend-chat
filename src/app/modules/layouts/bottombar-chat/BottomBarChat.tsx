@@ -9,6 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ConversationInterface } from '../../global/interfaces/ConversationInterface';
 import { Context } from '../../auth/AuthContext';
+import { handleSanitizeInput } from '../../helpers/utils/Utils';
 
 interface conversationChatInterface {
   conversation: ConversationInterface | null;
@@ -16,13 +17,8 @@ interface conversationChatInterface {
 const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
   const [typedText, setTypedText] = useState<string>('');
   const inputRef = useRef<HTMLDivElement>(null);
-  const {
-    conversation,
-    setConversation,
-    conversations,
-    setConversations,
-    user,
-  } = useContext(Context);
+  const { conversation, setConversation, setConversations, user } =
+    useContext(Context);
 
   function handleReset(): void {
     if (inputRef.current) {
@@ -102,7 +98,9 @@ const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
             id="input-text"
             contentEditable="true"
             className="primary-color"
-            onInput={(e) => setTypedText(e.currentTarget.innerText)}
+            onInput={(e) =>
+              setTypedText(handleSanitizeInput(e.currentTarget.innerText))
+            }
             ref={inputRef}
             onKeyDown={handleValidateMessage}
           ></div>
@@ -114,7 +112,7 @@ const BottomBarChat: React.FC<conversationChatInterface> = ({ ...props }) => {
           <button
             className="send-message action-button"
             onClick={handleSendMessage}
-            disabled={typedText.trim() === ''}
+            disabled={handleSanitizeInput(typedText) === ''}
           >
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>

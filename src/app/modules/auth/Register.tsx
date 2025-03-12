@@ -6,10 +6,11 @@ import { toast } from 'react-toastify';
 import {
   handleValidateRegister,
   handleValidateUsername,
-} from '../helpers/validators/AuthValidators';
+} from '../helpers/validators/UserValidators';
 import { RegisterInterface } from '../global/interfaces/UserModel';
 import { createUser, usernameValidate } from '../helpers/api/UserEnpoints';
 import { handleError } from '../helpers/utils/Requests';
+import { handleSanitizeInput } from '../helpers/utils/Utils';
 
 const Register = () => {
   const [name, setName] = useState<string>('');
@@ -113,7 +114,7 @@ const Register = () => {
               className="form-control mt-1"
               value={name}
               disabled={loadingUsername}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(handleSanitizeInput(e.target.value))}
             />
           </label>
           <label className="w-100 mt-1">
@@ -125,7 +126,7 @@ const Register = () => {
               value={username}
               disabled={loadingUsername}
               onChange={(e) => {
-                setUsername(e.target.value);
+                setUsername(handleSanitizeInput(e.target.value));
               }}
             />
 
@@ -161,7 +162,7 @@ const Register = () => {
               type="text"
               placeholder="Exemplo: marciosantos@gmail.com"
               className="form-control mt-1"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(handleSanitizeInput(e.target.value))}
               value={email}
               disabled={loadingUsername}
             />
@@ -172,7 +173,7 @@ const Register = () => {
               type="password"
               placeholder="Digite sua senha"
               className="form-control mt-1"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(handleSanitizeInput(e.target.value))}
               value={password}
               disabled={loadingUsername}
             />
@@ -183,7 +184,9 @@ const Register = () => {
               type="password"
               placeholder="Repita a senha"
               className="form-control mt-1"
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) =>
+                setConfirmPassword(handleSanitizeInput(e.target.value))
+              }
               value={confirmPassword}
               disabled={loadingUsername}
             />

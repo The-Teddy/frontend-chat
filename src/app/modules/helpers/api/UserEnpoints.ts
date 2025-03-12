@@ -32,8 +32,19 @@ export function updateName(
   token: string,
 ): Promise<AxiosResponse> {
   return axios.put(
-    '/users/update-name',
+    '/users/update-name/',
     { name },
-    { headers: handleGetHeaders('application/json') },
+    { headers: handleGetHeaders('application/json', token) },
+  );
+}
+export function updateBio(bio: string, token: string): Promise<AxiosResponse> {
+  return axios.put(
+    '/users/update-bio/',
+    {
+      bio,
+    },
+    {
+      headers: handleGetHeaders('application/json', token),
+    },
   );
 }

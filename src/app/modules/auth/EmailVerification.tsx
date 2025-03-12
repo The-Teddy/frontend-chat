@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Auth.scss';
 import { useParams } from 'react-router-dom';
 import { verify_email } from '../helpers/api/UserEnpoints';

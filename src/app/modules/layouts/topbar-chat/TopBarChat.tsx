@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import './TopBarChat.scss';
 import { Context } from '../../auth/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,7 @@ import MenuIcon from '../../components/icons/MenuIcon';
 import { initialConversation } from '../../global/vars';
 
 const TopBarChat = () => {
-  const { conversation, user, setConversation } = useContext(Context);
+  const { conversation, setConversation } = useContext(Context);
 
   return (
     <header id="top-bar-chat" className="top-bar-chat">

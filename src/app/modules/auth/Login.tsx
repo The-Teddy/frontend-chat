@@ -6,8 +6,9 @@ import { Context } from './AuthContext';
 import {
   handleValidateEmail,
   handleValidatePassword,
-} from '../helpers/validators/AuthValidators';
+} from '../helpers/validators/UserValidators';
 import { LoginInterface } from '../global/interfaces/UserModel';
+import { handleSanitizeInput } from '../helpers/utils/Utils';
 
 const Login = () => {
   const { handleLogin, loading } = useContext(Context);
@@ -44,7 +45,7 @@ const Login = () => {
               type="text"
               className="form-control mt-1"
               placeholder="Exemplo: marcio@gmail.com"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(handleSanitizeInput(e.target.value))}
               value={email}
             />
           </label>
@@ -54,7 +55,7 @@ const Login = () => {
               type="password"
               className="form-control mt-1"
               placeholder="Digite sua senha"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(handleSanitizeInput(e.target.value))}
               value={password}
             />
           </label>

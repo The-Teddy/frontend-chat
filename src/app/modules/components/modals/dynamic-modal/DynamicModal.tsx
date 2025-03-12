@@ -1,8 +1,5 @@
-import { Box, Modal } from '@mui/material';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React from 'react';
 import './DynamicModal.scss';
-import { MessageInterface } from '../../../global/interfaces/MessageInterface';
-import { Context } from '../../../auth/AuthContext';
 
 interface DynamicModalInterface {
   view: boolean;

@@ -38,10 +38,20 @@ function handleError(error: any): void {
   const { status, data } = error.response;
 
   // Se a resposta do FastAPI tiver um array de detalhes (erros de validação)
+  if (data?.detail && Array.isArray(data.detail)) {
+    data.detail.forEach((item: any) => {
+      if (item.msg) {
+        toast.error(item.msg.replace('Value error, ', ''));
+      } else if (typeof item === 'string') {
+        toast.error(item);
+      }
+    });
+    return;
+  }
   if (data?.detail.errors && Array.isArray(data.detail.errors)) {
     data.detail.errors.forEach((item: any) => {
       if (item.msg) {
-        toast.error(item.msg);
+        toast.error(item.msg.replace('Value error, ', ''));
       } else if (typeof item === 'string') {
         toast.error(item);
       }

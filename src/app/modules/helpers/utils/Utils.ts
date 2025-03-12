@@ -1,3 +1,6 @@
+import React from 'react';
+import DOMPurify from 'dompurify';
+
 function handleModalPosition(
   position: { clientX: number; clientY: number },
   id: string,
@@ -23,4 +26,23 @@ function handleModalPosition(
   return { x: positionX, y: positionY };
 }
 
-export { handleModalPosition };
+function handlePositionCursor(ref: React.RefObject<Node>) {
+  if (ref.current) {
+    const range = document.createRange();
+    const selection = window.getSelection();
+
+    range.selectNodeContents(ref.current);
+    range.collapse(false);
+
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+  }
+}
+function handleSanitizeInput(value: string): string {
+  return DOMPurify.sanitize(value, {
+    ALLOWED_TAGS: [],
+    ALLOWED_ATTR: [],
+  }).trim();
+}
+
+export { handleModalPosition, handlePositionCursor, handleSanitizeInput };

@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
 import './ToolsBar.scss';
 import { Context } from '../../auth/AuthContext';
-import Conversation from '../../components/conversation/Conversation';
 import ConversationIcon from '../../components/icons/ConversationIcon';
 import StatusIcon from '../../components/icons/StatusIcon';
-import ArchivedConversationsIcon from '../../components/icons/ArchivedConversationsIcon';
 import SettingsIcon from '../../components/icons/SettingsIcon';
 
 const ToolsBar: React.FC = () => {

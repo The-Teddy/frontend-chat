@@ -74,6 +74,18 @@ function handleValidateRegister(data: RegisterInterface): boolean {
 
   return true;
 }
+function handleValidateBio(bio: string): boolean {
+  const bioRegex: RegExp =
+    /^[a-zA-Z0-9À-ÖØ-öø-ÿ\s.,!?@#$%^&*()_\-+=:;"'<>«»€£¥•—–…]{10,200}$/;
+
+  const match: boolean = bioRegex.test(bio);
+
+  if (!match) {
+    toast.warning('');
+    return match;
+  }
+  return match;
+}
 
 export {
   handleValidatePassword,
@@ -81,4 +93,5 @@ export {
   handleValidateName,
   handleValidateUsername,
   handleValidateRegister,
+  handleValidateBio,
 };
